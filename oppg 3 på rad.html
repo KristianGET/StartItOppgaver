@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>oppg3pårad</title>
+
+    <!-- <link rel="stylesheet" type="text/css" href=""> -->
+
+    <style>
+        #niXni {
+            display: inline-block;
+        }
+
+        .box {
+            display: table-cell;
+            line-height: 180px;
+            vertical-align: middle;
+            background-color: rgb(247, 247, 247);
+            border: 2px solid red;
+            margin: 5px;
+            height: 200px;
+            width: 200px;
+            float: right;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 150px;
+            color: rgb(114, 255, 32);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="niXni">
+        <div id="linje1">
+            <div class="box" onclick="getX(this)"></div>
+            <div class="box" onclick="getX(this)"></div>
+            <div class="box" onclick="getX(this)"></div>
+        </div>
+
+        <div id="linje2">
+            <div class="box" onclick="getX(this)"></div>
+            <div class="box" onclick="getX(this)"></div>
+            <div class="box" onclick="getX(this)"></div>
+        </div>
+
+        <div id="linje3">
+            <div class="box" onclick="getX(this)"></div>
+            <div class="box" onclick="getX(this)"></div>
+            <div class="box" onclick="getX(this)"></div>
+        </div>
+    </div>
+</body>
+<script>
+    var divs1 = document.getElementsByClassName('box');
+    var divs2 = new Array();
+
+    function getX(rute) {
+        if (rute.innerHTML !== 'o' && rute.innerHTML !== 'x') {
+            rute.innerHTML = 'x';
+
+            for (var i = 0; i < divs1.length; i++) {
+                if (divs1[i].innerHTML !== 'x' && divs1[i].innerHTML !== 'o') {
+                    divs2.push(divs1[i]);
+                }
+            }
+
+            if (divs2.length > 0) {
+                var index = Math.floor(Math.random() * divs2.length);
+                divs2[index].innerHTML = 'o';
+                divs2[index].style.color = 'blue';
+            }
+        }
+    }
+</script>
+
+</html>
